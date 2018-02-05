@@ -12,6 +12,7 @@ export default {
         handleRouter () {
             // this.$store.state.count++
             this.$store.commit('increment', 2)
+            this.$store.dispatch('asyncIncrement')
             this.$router.push('/user/456')
         }
     }

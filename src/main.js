@@ -7,6 +7,7 @@ import App from './app'
 Vue.config.productionTip = false
 
 router.beforeEach((to, from, next) => {
+    window.document.title = to.meta.title
     if (to.meta.title) {
         next()
     } else {

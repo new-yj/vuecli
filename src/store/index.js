@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-const store = new Vuex.Store({
+const moduleA = {
     state: {
         count: 0,
         typeCount: 0,
@@ -27,6 +27,26 @@ const store = new Vuex.Store({
         listCount: state => {
             return state.list.length
         }
+    },
+    actions: {
+        asyncIncrement (context, callback) {
+            return new Promise(resolve => {
+                setTimeout(() => {
+                    context.commit('increment')
+                    resolve()
+                }, 1500)
+            })
+            // setTimeout(() => {
+            //     context.commit('increment')
+            //     callback()
+            // }, 1500)
+        }
+    }
+}
+
+const store = new Vuex.Store({
+    modules: {
+        a: moduleA
     }
 })
 
